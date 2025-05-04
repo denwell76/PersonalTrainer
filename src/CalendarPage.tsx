@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
+import { Calendar, momentLocalizer, Views, View } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
 import { fetchTrainings, fetchCustomerByUrl } from './api';
@@ -9,7 +9,7 @@ const localizer = momentLocalizer(moment);
 export default function CalendarPage() {
   const [events, setEvents] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [view, setView] = useState<string>(Views.MONTH);
+  const [view, setView] = useState<View>(Views.MONTH);
   const [date, setDate] = useState<Date>(new Date());
 
   const fetchEvents = async () => {
@@ -45,7 +45,7 @@ export default function CalendarPage() {
     }
   };
 
-  const handleViewChange = (newView: string) => {
+  const handleViewChange = (newView: View) => {
     setView(newView);
   };
 
